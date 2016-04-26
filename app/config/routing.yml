@@ -1,0 +1,4 @@
+quiz_basic:
+    resource: "@QuizBasicBundle/Resources/config/routing.yml"
+    prefix:   /
+

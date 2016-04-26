@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Quiz{% endblock %}</title>  
+        
+        <link rel="stylesheet" href="{{ asset('bundles/quizbasic/js/lib/jquery-ui-1.11.1.custom/jquery-ui.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/quizbasic/lib/bootstrap/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/quizbasic/css/base.css') }}" />
+        {% block stylesheets %}{% endblock %}
+        {# <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" /> #}
+        
+        <script src='{{ asset('bundles/quizbasic/js/lib/jquery-1.11.1.min.js') }}'></script>
+        <script src='{{ asset('bundles/quizbasic/js/lib/jquery-ui-1.11.1.custom/jquery-ui.min.js') }}'></script>        
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+    	{% if app.request.attributes.get('_route') != '_landing' and app.request.attributes.get('_route') != '_register' %}
+    	<div id="logout">
+    		<a href="{{ path('_logout') }}" class="btn btn-primary btn-sm" id="button">Logout</a>
+    	</div>
+    	{% endif %}
+        {% block body %}{% endblock %}       
+    </body>
+</html>

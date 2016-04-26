@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block javascripts %}
+<script src='{{ asset('bundles/quizbasic/js/landingLogin.js') }}'></script>
+{% endblock %}
+
+{% block body %}
+<div id="container" class="p_index">
+	<div id="userAction">
+		<div id="loginForm">
+			<form class="form-signin form_login" role="form" action="{{ path('_loginCheck') }}" method="post" >
+				<h2 class="form-signin-heading">Login</h2>
+                <div id="custom_error">
+            	{% if error is defined and error %}
+            	{{ error.message }}
+            	{% endif %}
+            	</div>
+                <input class="form-control" placeholder="Username" required="" autofocus="" type="text" id="username" name="_username" value="{{ last_username }}" />
+                <input class="form-control" placeholder="Password" required="" type="password" id="password" name="_password" />
+                <a tabindex="-1" class="btn btn-link" href="{{ path('_anonymousLogin') }}">Login as Anonymous</a>
+                <button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">Login</button>               
+            </form>
+		</div>
+		<div id="registerForm">
+			<form class="form-signin form_register" role="form" novalidate action="{{ path('_register') }}" method="post" {{ form_enctype(form) }}>
+				<h2 class="form-signin-heading">Register</h2>
+            	<div id="custom_error">
+            	{% if error_register is defined %}
+            	{{ error_register }}
+            	{% endif %}
+            	<div class="formError">{{ form_errors(form.user.username) }}</div> 
+            	<div class="formError">{{ form_errors(form.user.password.first) }}</div>
+            	<div class="formError">{{ form_errors(form.user.password.second) }}</div>
+            	</div>
+            	           	           	
+                <div class="formRow">
+                    {{ form_widget(form.user.username) }}
+                </div>
+                              
+                <div class="formRow">
+                    {{ form_widget(form.user.password.first) }}
+                </div>
+                                
+                <div class="formRow">
+                    {{ form_widget(form.user.password.second) }}
+                </div>
+                
+                <div class="formRow submit">
+                	<button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">Register</button>
+                </div>    
+            	{{ form_row(form._token) }}
+            </form>
+		</div>
+	</div>
+</div>
+{% endblock %}

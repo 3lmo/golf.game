@@ -1,0 +1,188 @@
+@CHARSET "UTF-8";
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background-color: #eee;
+}
+
+p, h1, h2, h3 {
+	margin: 0;
+}
+
+#container {
+	width: 100%;
+	height: 100%;   
+}
+
+.p_home {
+	text-align: center;
+}
+
+.p_home > h2 {
+	padding: 10px 0;	
+	text-align: center;
+}
+
+.p_home #button {
+	width: 150px;
+    margin: 10px 0;
+}
+
+div#userAction {
+	text-align: center;
+	width: 500px;
+    margin: 0 auto;
+}
+
+.custom_error {
+	color: red;
+}
+
+.formError ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	color: red;
+}
+
+#logout {
+	position: absolute;
+	right: 0;
+	margin: 10px 10px 0 0;
+}
+
+div#userAction > div {
+	display: inline-block;  
+	position: relative;  
+    background-color: lightblue;
+}
+
+div#loginForm {
+	background-color: lightgreen !important;
+	float: left;
+}
+
+div#loginForm,
+div#registerForm {
+	height: 280px;
+}
+
+label {
+    line-height: 2.5em;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin a {
+	margin-bottom: 9px;
+}
+.form-signin .form-signin-heading {
+  margin-bottom: 10px;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"],
+.form_register input#registration_user_password_first {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form_login input#password,
+.form_register input#registration_user_password_second {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.p_game #game_element {
+	float: left;
+    overflow: hidden;
+}
+
+.p_game #wrapper {
+	position: relative;
+	width: 220px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.p_game #game {
+	position: relative;
+	width: 10000em;	
+}
+
+.p_game #game_element img {
+	width: 220px;
+}
+
+.p_game .radio {
+	padding: 10px 0;
+}
+
+.radio > p {
+	text-align: center;
+}
+
+.radio #first_name {
+	margin-bottom: 10px;
+}
+
+.p_game .radio label {
+	line-height: 1.6em;
+}
+
+#stats-wrapper {
+	display: none;
+}
+
+#stats {
+	width: 1000px;
+}
+
+#stats #correct_count,
+#stats #wrong_count {
+	background-color: green;
+	width: 20px;
+	margin: 0 auto;
+	height: 20px;
+}
+
+#stats #wrong_count {
+	background-color: red;
+}
+
+.row {
+	border-bottom: 1px solid black;
+	margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 10px;
+}
+
+.row > div {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.newGame {
+	width: 123px;
+	margin: 0 auto;
+}
+
+.newGame > a {
+	margin-top: 20px;
+}

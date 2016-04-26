@@ -1,0 +1,62 @@
+#landing page for non-registered users
+_landing:
+    path:     /
+    defaults: { _controller: QuizBasicBundle:Secured:index }
+
+#landing page for registered users
+_home:
+    path:     /home
+    defaults: { _controller: QuizBasicBundle:Default:home }
+
+#login user as anonymous and set session var
+_anonymousLogin:
+  pattern: /login/anonymous
+  defaults: { _controller: QuizBasicBundle:Secured:anonymousLogin }    
+  requirements:
+         _method: GET 
+ 
+#the symfony security verifies the user         
+_register:
+  pattern: /register
+  defaults: { _controller: QuizBasicBundle:Secured:register }
+  requirements:
+         _method: POST
+ 
+#the symfony security verifies the user         
+_loginCheck:
+  pattern: /login/check
+  defaults: { _controller: QuizBasicBundle:Secured:loginCheck }
+  requirements:
+         _method: POST
+
+#the symfony security deletes the session of the authenticated user
+_easyGame:
+  pattern: /easy
+  defaults: { _controller: QuizBasicBundle:Default:easyGame }
+  requirements:
+         _method: GET
+         
+_mediumGame:
+  pattern: /medium
+  defaults: { _controller: QuizBasicBundle:Default:mediumGame }
+  requirements:
+         _method: GET
+         
+_hardGame:
+  pattern: /hard
+  defaults: { _controller: QuizBasicBundle:Default:hardGame }
+  requirements:
+         _method: GET
+         
+_endGame:
+  pattern: /end
+  defaults: { _controller: QuizBasicBundle:Default:endGame }
+  requirements:
+         _format: (xml|json)
+         _method: POST
+
+#the symfony security deletes the session of the authenticated user
+_logout:
+  pattern: /logout
+  requirements:
+         _method: GET

@@ -1,0 +1,33 @@
+security:
+    encoders:
+        Quiz\BasicBundle\Entity\User:
+           algorithm: sha1
+           iterations: 1
+           encode_as_base64: false
+
+
+    role_hierarchy:        
+        ROLE_SUPER_ADMIN: [ ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+        ROLE_ADMIN:       ROLE_USER
+
+    providers:
+        administrators:
+            entity: { class: QuizBasicBundle:User, property: username }
+
+    firewalls:
+        secured_area:
+            pattern: ^/
+            anonymous: ~
+            form_login:
+               default_target_path: _home
+               login_path: _landing
+               check_path: _loginCheck
+               success_handler: security.authentication.success_handler
+            logout:
+               path: _logout
+               target: _landing
+               invalidate_session: false
+   
+            
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }

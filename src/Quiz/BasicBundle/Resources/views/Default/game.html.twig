@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block javascripts %}
+<script src='{{ asset('bundles/quizbasic/js/game.js') }}'></script>
+<script>
+window.game = {{ game|json_encode|raw }};
+window.endGameUrl = "{{ path('_endGame') }}";
+window.homeUrl = "{{ path('_home') }}";
+window.user_type = "{{ app.request.session.get('loggedInWith') }}";
+quiz_game.init(game);
+</script>
+{% endblock %}
+
+{% block body %}
+<div id="container" class="p_game">
+	<div id="wrapper">
+		<div id="game">
+			<div id="loading"></div>
+		</div>
+	</div>
+	<div id="stats-wrapper">
+		<div id="stats">
+			<div class="row">
+				<div class="col-xs-1 col-md-1"><strong>Number</strong></div>
+			  	<div class="col-xs-4 col-md-2"><strong>Your Answer</strong></div>
+			  	<div class="col-xs-4 col-md-2"><strong>Correct Answer</strong></div>
+			  	<div class="col-xs-1 col-md-1"><strong>Correct(<span class="correct_count"></span>)</strong></div>
+			  	<div class="col-xs-1 col-md-1"><strong>Wrong(<span class="wrong_count"></span>)</strong></div>
+			</div>
+		</div>		
+	</div>
+</div>
+{% endblock %}

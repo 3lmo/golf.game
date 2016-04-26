@@ -1,0 +1,3 @@
+parameters:
+    game_category: ['easy', 'medium', 'hard']
+            

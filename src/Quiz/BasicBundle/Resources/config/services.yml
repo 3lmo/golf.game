@@ -1,0 +1,36 @@
+parameters:
+#    quiz_basic.example.class: Quiz\BasicBundle\Example
+
+services:
+    security.authentication.success_handler:
+        class: Quiz\BasicBundle\Handler\AuthenticationSuccessHandler
+        public: false
+        arguments:    [@router, @service_container]
+            
+    kernel.listener.exceptionListener:
+        class: Quiz\BasicBundle\Listener\ExceptionListener
+        tags:
+          - { name: "kernel.event_listener", event: "kernel.exception", method: "onKernelException" }
+          - { name: monolog.logger, channel: "logger" }
+        arguments: 
+          - @logger
+          
+    login_listener:
+        class: Quiz\BasicBundle\Listener\LoginListener
+        arguments: [@security.context, @router, @logger]
+        tags:
+            - { name: 'kernel.event_listener', event: 'security.interactive_login' }
+    
+        
+    user_service:
+        class: Quiz\BasicBundle\Service\UserService
+        scope: request
+        arguments:    [@request, @doctrine.orm.default_entity_manager]
+        
+    game_service:
+        class: Quiz\BasicBundle\Service\GameService
+        arguments:    [@doctrine.orm.default_entity_manager, @db_manager]
+        
+    db_manager:
+        class: Quiz\BasicBundle\Service\DatabaseManager
+        arguments:    [@doctrine.orm.default_entity_manager, @doctrine.orm.remote_entity_manager, %members%]

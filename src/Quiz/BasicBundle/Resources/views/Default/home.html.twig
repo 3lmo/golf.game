@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block body %}
+<div id="container" class="p_home">
+<h2>Choose difficulty</h2>
+{% for category in game_category %}
+<div class="{{ category }}">
+	{% if category == "easy" %}	
+	<a href="{{ path('_easyGame') }}" class="btn btn-success btn-lg" id="button">{{ category }}</a>
+	{% elseif category == "medium" %}
+	<a href="{{ path('_mediumGame') }}" class="btn btn-warning btn-lg" id="button">{{ category }}</a>
+	{% elseif category == "hard" %}
+	<a href="{{ path('_hardGame') }}" class="btn btn-danger btn-lg" id="button">{{ category }}</a>
+	{% endif %}
+</div>
+{% endfor %}
+</div>
+{% endblock %}
